@@ -47,7 +47,12 @@ public class FXMLDocumentController implements Initializable {
     private TextArea textAreaTXT;
 
     @FXML
-    private void encolarPersonas(ActionEvent event) {
+    private void startSetup(ActionEvent event) {
+          
+    }
+    
+    @FXML
+    private void finishSetup(ActionEvent event) {
           
     }
     @Override
