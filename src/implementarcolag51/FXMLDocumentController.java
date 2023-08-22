@@ -5,15 +5,18 @@
  */
 package implementarcolag51;
 
-import datos.Persona;
+import datos.Carro;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.MenuBar;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.web.WebView;
 import modelo.Cola;
 
 /**
@@ -23,49 +26,34 @@ import modelo.Cola;
 public class FXMLDocumentController implements Initializable {
 
     @FXML
-    private Label tituloL;
+    private Label edadTXT;
     @FXML
-    private Label nombrePL;
+    private Label timeTXT;
     @FXML
-    private Label correoPL;
+    private Label timeTransTXT;
     @FXML
-    private Label numPL;
-
+    private Label reportTXT;
     @FXML
-    private TextField nombreTXT;
+    private MenuBar menuTXT;
     @FXML
-    private TextField correoTXT;
+    private WebView web1;
     @FXML
-    private TextField numTXT;
+    private WebView web2;
     @FXML
-    private TextArea mostrarTAXT;
-
-    Cola<Persona> colaPersonas;
+    private Button startSetup;
+    @FXML
+    private Button finishSetup;
+    @FXML
+    private TextArea textAreaTXT;
 
     @FXML
     private void encolarPersonas(ActionEvent event) {
-//        System.out.println("You clicked me!");
-//        label.setText("Hello World!");
-
-        String nombreP = nombreTXT.getText();
-        String correoP = correoTXT.getText();
-        String numP = numTXT.getText();
-
-        colaPersonas.encolar(new Persona(nombreP, correoP, numP));
-    }
-
-     @FXML
-    private void mostrarPersonas(ActionEvent event) {
-//        System.out.println("You clicked me!");
-//        label.setText("Hello World!");
-
-        mostrarTAXT.setText(colaPersonas.toString());
+          
     }
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
 
-        colaPersonas = new Cola<>();
     }
 
 }

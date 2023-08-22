@@ -1,26 +1,61 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.text.*?>
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.effect.Light.Distant?>
+<?import javafx.scene.effect.Lighting?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.web.WebView?>
 
-<AnchorPane id="AnchorPane" prefHeight="380.0" prefWidth="759.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="implementarcolag51.FXMLDocumentController">
+<AnchorPane id="AnchorPane" prefHeight="380.0" prefWidth="759.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="implementarcolag51.FXMLDocumentController">
     <children>
-        <Button fx:id="button" layoutX="192.0" layoutY="315.0" onAction="#encolarPersonas" text="Encolar" />
-        <Label fx:id="tituloL" layoutX="83.0" layoutY="14.0" minHeight="16" minWidth="69" text="Insertar Personas a la Cola">
-         <font>
-            <Font size="27.0" />
-         </font></Label>
-      <Label fx:id="nombrePL" layoutX="92.0" layoutY="106.0" text="Nombre Persona" />
-      <TextField fx:id="nombreTXT" layoutX="221.0" layoutY="101.0" />
-      <TextField fx:id="correoTXT" layoutX="221.0" layoutY="145.0" />
-      <Label fx:id="correoPL" layoutX="102.0" layoutY="150.0" text="Correo Persona" />
-      <TextField fx:id="numTXT" layoutX="221.0" layoutY="190.0" />
-      <Label fx:id="NumPL" layoutX="42.0" layoutY="195.0" text="Número Celular Persona" />
-      <TextArea fx:id="mostrarTAXT" layoutX="455.0" layoutY="71.0" prefHeight="200.0" prefWidth="200.0" />
-      <Button layoutX="315.0" layoutY="315.0" onAction="#mostrarPersonas" text="Mostrar" />
+        <MenuBar fx:id="menuTXT" layoutY="1.0">
+            <menus>
+                <Menu mnemonicParsing="false" text="File">
+                    <items>
+                        <MenuItem mnemonicParsing="false" text="Close" />
+                    </items>
+                </Menu>
+                <Menu mnemonicParsing="false" text="Edit">
+                    <items>
+                        <MenuItem mnemonicParsing="false" text="Delete" />
+                    </items>
+                </Menu>
+                <Menu mnemonicParsing="false" text="Help">
+                    <items>
+                        <MenuItem mnemonicParsing="false" text="About" />
+                    </items>
+                </Menu>
+            </menus>
+        </MenuBar>
+        <Button fx:id="startSetup" layoutX="40.0" layoutY="314.0" mnemonicParsing="false" text="INICIAR" />
+        <Button fx:id="finishSetup" layoutX="133.0" layoutY="314.0" mnemonicParsing="false" text="TERMINAR" />
+        <WebView fx:id="web1" layoutX="33.0" layoutY="46.0" prefHeight="120.0" prefWidth="463.0">
+            <effect>
+                <Lighting bumpInput="$null" surfaceScale="0.0">
+                    <light>
+                        <Light.Distant />
+                    </light>
+                </Lighting>
+            </effect>
+        </WebView>
+        <TextArea fx:id="textAreaTXT" layoutX="33.0" layoutY="212.0" prefHeight="89.0" prefWidth="200.0" />
+        <Label fx:id="reportTXT" layoutX="40.0" layoutY="182.0" text="Reporte:" />
+        <Label fx:id="timeTXT" layoutX="243.0" layoutY="182.0" text="Tiempo total:" />
+        <WebView fx:id="web2" layoutX="543.0" layoutY="58.0" prefHeight="282.0" prefWidth="176.0">
+            <effect>
+                <Lighting bumpInput="$null" diffuseConstant="1.02" specularConstant="0.35" surfaceScale="0.0">
+                    <light>
+                        <Light.Distant />
+                    </light>
+                </Lighting>
+            </effect>
+        </WebView>
+        <Label fx:id="edadTXT" layoutX="543.0" layoutY="37.0" text="Edad" />
+        <Label fx:id="timeTransTXT" layoutX="631.0" layoutY="37.0" text="Tiempo transcu.." />
     </children>
 </AnchorPane>
