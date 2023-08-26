@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package implementarcolag51;
+package controller;
 
 import datos.Carro;
 import java.net.URL;

@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.web.WebView?>
 
-<AnchorPane id="AnchorPane" prefHeight="380.0" prefWidth="759.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="implementarcolag51.FXMLDocumentController">
+<AnchorPane id="AnchorPane" prefHeight="380.0" prefWidth="759.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.FXMLDocumentController">
     <children>
         <MenuBar fx:id="menuTXT" layoutY="1.0">
             <menus>
