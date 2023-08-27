@@ -75,15 +75,9 @@ public class FXMLDocumentController implements Initializable {
             }
 
         }
+    }//fin del crearCarro
+    
 
-    }
-    // TODO code application logic here        
-//           
-//    ArrayList<receptor> losReceptores = new ArrayList<>();        
-//    //Loop            
-//    //formula para generar valores aleatorios con un maximo y minimo 
-//        int         
-//        int b = (int)(Math.random()*(max-min+1)+min);       
 //        int elModelo = (int) (Math.random() * (2024 - 2000 + 1) + 2000);        //por ahora el nombre estara en blanco para confirmar que el loop funciona         
 //        String elNombre = "David";        int elTiempoLan = (int) (Math.random() * (5 - 1 + 1) + 1);        
 //        colaCarros.encolar(new Carro(elModelo, elNombre, elTiempoLan));
