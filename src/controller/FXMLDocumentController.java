@@ -7,6 +7,7 @@ package controller;
 
 import datos.Carro;
 import java.net.URL;
+import java.util.Random;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -18,12 +19,19 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.web.WebView;
 import modelo.Cola;
+import datos.Carro;
+import java.util.UUID;
+import modelo.Cola;
+import datos.receptor;
+import java.util.ArrayList;
 
 /**
  *
  * @author Alejo-PC
  */
 public class FXMLDocumentController implements Initializable {
+
+    Cola<Carro> colaCarros = new Cola<>();
 
     @FXML
     private Label edadTXT;
@@ -45,8 +53,30 @@ public class FXMLDocumentController implements Initializable {
     private Button finishSetup;
     @FXML
     private TextArea textAreaTXT;
-    
-    public void crearCarros(ActionEvent event){
+
+    public void crearCarros() {
+
+        while (true) {
+            int numeroCarros = (int) (Math.random() * (6 - 1 + 1) - 1); // Genera entre 1 y 6 carros
+
+            for (int i = 0; i < numeroCarros; i++) {
+                int elModelo = (int) (Math.random() * (2024 - 2000 + 1) + 2000);
+                int elTiempoLan = (int) (Math.random() * (5 - 1 + 1) + 1);
+                String elNombre = "David";
+                //los de arriba son el generador de carros 
+
+                Carro nuevoCarro = new Carro(elModelo, elNombre, elTiempoLan);
+                colaCarros.encolar(nuevoCarro);
+            }
+            try {
+                Thread.sleep(1000); // Espera 1 segundo
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+
+        }
+
+    }
     // TODO code application logic here        
 //           
 //    ArrayList<receptor> losReceptores = new ArrayList<>();        
@@ -57,22 +87,21 @@ public class FXMLDocumentController implements Initializable {
 //        int elModelo = (int) (Math.random() * (2024 - 2000 + 1) + 2000);        //por ahora el nombre estara en blanco para confirmar que el loop funciona         
 //        String elNombre = "David";        int elTiempoLan = (int) (Math.random() * (5 - 1 + 1) + 1);        
 //        colaCarros.encolar(new Carro(elModelo, elNombre, elTiempoLan));
-    }
 
     @FXML
     private void startSetup(ActionEvent event) {
-          
+
     }
-    
+
     @FXML
     private void finishSetup(ActionEvent event) {
-          
+
     }
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-        
-        Cola<Carro> colaCarros = new Cola<>();
+
     }
 
 }
