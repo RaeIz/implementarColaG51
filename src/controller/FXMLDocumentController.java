@@ -5,7 +5,6 @@
  */
 package controller;
 
-import datos.Carro;
 import java.net.URL;
 import java.util.Random;
 import java.util.ResourceBundle;
@@ -18,12 +17,21 @@ import javafx.scene.control.MenuBar;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.web.WebView;
-import modelo.Cola;
 import datos.Carro;
-import java.util.UUID;
-import modelo.Cola;
 import datos.receptor;
+import datos.Tools;
+import java.time.Duration;
+import modelo.Cola;
+import modelo.Base;
+import modelo.OperacionesCola;
+import java.util.UUID;
 import java.util.ArrayList;
+import java.util.LinkedList;
+import javafx.animation.Animation;
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
+import javafx.event.EventHandler;
+
 
 /**
  *
@@ -32,9 +40,10 @@ import java.util.ArrayList;
 public class FXMLDocumentController implements Initializable {
 
     Cola<Carro> colaCarros = new Cola<>();
+    
 
     @FXML
-    private Label edadTXT;
+    private Label nombreTXT;
     @FXML
     private Label timeTXT;
     @FXML
@@ -44,22 +53,58 @@ public class FXMLDocumentController implements Initializable {
     @FXML
     private MenuBar menuTXT;
     @FXML
-    private WebView web1;
-    @FXML
-    private WebView web2;
-    @FXML
     private Button startSetup;
     @FXML
     private Button finishSetup;
     @FXML
     private TextArea textAreaTXT;
+    
+   
+    
+    
+    
+    private void startSetup(ActionEvent event) {
+        
+    }
 
-    public void crearCarros() {
+    @FXML
+    private void finishSetup(ActionEvent event) {
+        
+    }
 
-        while (true) {
-            int numeroCarros = (int) (Math.random() * (6 - 1 + 1) - 1); // Genera entre 1 y 6 carros
+    @Override
+    public void initialize(URL url, ResourceBundle rb) {
+        // TODO
+//        colaCarros = new Cola<>();
+//        receptores = new Cola<>();
+//        for(int i= 0; i <= 5; i++)
+//        {
+//            
+//        }
+//        System.out.println(receptores.toString());
+//        t = new Timeline(new KeyFrame(Duration.millis(1000)), 
+//                new EventHandler<ActionEvent>(){
+//            @Override
+//            public void handle(ActionEvent event){
+//                funcionArbol();
+//            }
+//        });   
+    }
+//        t.setCyclecount(Animation.INDEFINITE);
+//        
+//        webEngineCola = webCola.getEngine();
+//        webEngineCajeros = webCajeros.getEngine();
+        
+    private boolean verificarCajerosLibres(){
+        return true;
+    }
+    
+    
+    private void crearCarros() {
 
-            for (int i = 0; i < numeroCarros; i++) {
+        int numeroCarros = (int) (Math.random() * (6 - 1 + 1) - 1); // Genera entre 1 y 6 carros
+        
+        for (int i = 0; i < numeroCarros; i++) {
                 int elModelo = (int) (Math.random() * (2024 - 2000 + 1) + 2000);
                 int elTiempoLan = (int) (Math.random() * (5 - 1 + 1) + 1);
                 String elNombre = "David";
@@ -75,27 +120,14 @@ public class FXMLDocumentController implements Initializable {
             }
 
         }
-    }//fin del crearCarro
     
-
-//        int elModelo = (int) (Math.random() * (2024 - 2000 + 1) + 2000);        //por ahora el nombre estara en blanco para confirmar que el loop funciona         
-//        String elNombre = "David";        int elTiempoLan = (int) (Math.random() * (5 - 1 + 1) + 1);        
-//        colaCarros.encolar(new Carro(elModelo, elNombre, elTiempoLan));
-
-    @FXML
-    private void startSetup(ActionEvent event) {
-
+    private void funcionArbol(){
+        crearCarros();
+        verificarCajerosLibres();
+//        tiempoTotal++;
+//        webCola.loadContent(convertirColaAHtml());
+//        webCajeros.loadContent(hacerHtmlCajero());
+        
+        
     }
-
-    @FXML
-    private void finishSetup(ActionEvent event) {
-
-    }
-
-    @Override
-    public void initialize(URL url, ResourceBundle rb) {
-        // TODO
-
-    }
-
 }
