@@ -26,7 +26,10 @@ import modelo.Base;
 import modelo.OperacionesCola;
 import java.util.UUID;
 import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Iterator;
 import java.util.LinkedList;
+import java.util.Set;
 import javafx.animation.Animation;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
@@ -42,7 +45,7 @@ public class FXMLDocumentController implements Initializable {
     Cola<Carro> colaCarros = new Cola<>();
 
     Cola<receptor> colaReceptor = new Cola<>();
-
+    
     @FXML
     private Label nombreTXT;
     @FXML
@@ -80,8 +83,30 @@ public class FXMLDocumentController implements Initializable {
     }
 
     private boolean verificarCajerosLibres() {
-        return true;
+        System.out.println("INICIO REVISION:...");
+        for(Iterator<receptor> itRecep = colaReceptor.iterator(); itRecep.hasNext();)
+        {
+            receptor caja = itRecep.next();
+            if (caja.isOcupado() && !colaReceptor.estaVacia())
+            {
+                //linea que permite copiar la informacion de la cola a una colacopia sin destruir la cola
+                
+//                caja.setOcupado(true);
+//                caja.setTiempoLanR(.getTiempoLanC());
+//                caja.setCarroAtendiendo(.getModeloC());
+//                ;
+            }
+            else 
+            {
+                if(caja.getTiempoLanR()> 0)
+                {
+                    caja.setTiempoLanR(caja.getTiempoLanR()-1);
+                }
+            }
+        }
+        return false;
     }
+                
 
     private void crearCarros() {
 
@@ -130,41 +155,40 @@ public class FXMLDocumentController implements Initializable {
     }
 
     //prueba de receptor 
-    private void crearReceptor() {
-        //lim es el numero limite de receptroes 
-        int lim = 4;
-
-        //este loop deberia generar revisiones por parte del receptor de manera infinita 
-        while (true) {
-
-            Carro carroAAtender = colaCarros.desencolar();
-            int tiempoLanC = carroAAtender.getTiempoLanC();
-            //crea un loop como el de crear carro para ajustar los valores del receptro 
-            for (int i = 0; i <= lim; i++) {
-                //es similar al tiempo random de carro, despues de todo se deben comparar y se define
-                //libre haciendo referencia a cuando esta libre el receptro 
-                int libre = (int) (Math.random() * (5 - 1 + 1) + 1);
-                boolean t = false;
-
-                if (libre == tiempoLanC) {
-                    t = true;
-                    receptor nuevoReceptor = new receptor(t, carroAAtender, libre);
-                } else {
-                    break;
-                }
-            }
-            try {
-                Thread.sleep(1000 * tiempoLanC); // Espera 1 segundo
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-        }
-
-    }// fin 
+//    private void crearReceptor() {
+//        //lim es el numero limite de receptroes 
+//        int lim = 4;
+//
+//        //este loop deberia generar revisiones por parte del receptor de manera infinita 
+//        while (true) {
+//
+//            Carro carroAAtender = colaCarros.desencolar();
+//            int tiempoLanC = carroAAtender.getTiempoLanC();
+//            //crea un loop como el de crear carro para ajustar los valores del receptro 
+//            for (int i = 0; i <= lim; i++) {
+//                //es similar al tiempo random de carro, despues de todo se deben comparar y se define
+//                //libre haciendo referencia a cuando esta libre el receptro 
+//                int libre = (int) (Math.random() * (5 - 1 + 1) + 1);
+//                boolean t = false;
+//
+//                if (libre == tiempoLanC) {
+//                    t = true;
+//                    receptor nuevoReceptor = new receptor(t, carroAAtender, libre);
+//                } else {
+//                    break;
+//                }
+//            }
+//            try {
+//                Thread.sleep(1000 * tiempoLanC); // Espera 1 segundo
+//            } catch (InterruptedException e) {
+//                e.printStackTrace();
+//            }
+//        }
+//
+//    }// fin 
 
     private void funcionArbol() {
         crearCarros();
-        crearReceptor();
         verificarCajerosLibres();
 //        tiempoTotal++;
 //        webCola.loadContent(convertirColaAHtml());
