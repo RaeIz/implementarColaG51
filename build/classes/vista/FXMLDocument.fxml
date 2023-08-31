@@ -6,8 +6,6 @@
 <?import javafx.scene.control.MenuBar?>
 <?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.TextArea?>
-<?import javafx.scene.effect.Light.Distant?>
-<?import javafx.scene.effect.Lighting?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.web.WebView?>
 
@@ -32,30 +30,14 @@
                 </Menu>
             </menus>
         </MenuBar>
-        <Button fx:id="startSetup" layoutX="40.0" layoutY="314.0" mnemonicParsing="false" text="INICIAR" />
-        <Button fx:id="finishSetup" layoutX="133.0" layoutY="314.0" mnemonicParsing="false" text="TERMINAR" />
-        <WebView fx:id="web1" layoutX="33.0" layoutY="46.0" prefHeight="120.0" prefWidth="463.0">
-            <effect>
-                <Lighting bumpInput="$null" surfaceScale="0.0">
-                    <light>
-                        <Light.Distant />
-                    </light>
-                </Lighting>
-            </effect>
-        </WebView>
+        <Button layoutX="40.0" layoutY="314.0" mnemonicParsing="false" text="INICIAR" />
+        <Button layoutX="133.0" layoutY="314.0" mnemonicParsing="false" text="TERMINAR" />
         <TextArea fx:id="textAreaTXT" layoutX="33.0" layoutY="212.0" prefHeight="89.0" prefWidth="200.0" />
         <Label fx:id="reportTXT" layoutX="40.0" layoutY="182.0" text="Reporte:" />
         <Label fx:id="timeTXT" layoutX="243.0" layoutY="182.0" text="Tiempo total:" />
-        <WebView fx:id="web2" layoutX="543.0" layoutY="58.0" prefHeight="282.0" prefWidth="176.0">
-            <effect>
-                <Lighting bumpInput="$null" diffuseConstant="1.02" specularConstant="0.35" surfaceScale="0.0">
-                    <light>
-                        <Light.Distant />
-                    </light>
-                </Lighting>
-            </effect>
-        </WebView>
-        <Label fx:id="edadTXT" layoutX="543.0" layoutY="37.0" text="Edad" />
+        <Label fx:id="nombreTXT" layoutX="543.0" layoutY="37.0" text="Nombre" />
         <Label fx:id="timeTransTXT" layoutX="631.0" layoutY="37.0" text="Tiempo transcu.." />
+      <WebView fx:id="webCola" layoutX="33.0" layoutY="42.0" prefHeight="134.0" prefWidth="437.0" />
+      <WebView fx:id="webCajeros" layoutX="536.0" layoutY="59.0" prefHeight="287.0" prefWidth="194.0" />
     </children>
 </AnchorPane>

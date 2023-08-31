@@ -31,6 +31,7 @@ import javafx.animation.Animation;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.event.EventHandler;
+import javafx.scene.web.WebEngine;
 
 /**
  *
@@ -58,6 +59,8 @@ public class FXMLDocumentController implements Initializable {
     private Button finishSetup;
     @FXML
     private TextArea textAreaTXT;
+    @FXML
+    private WebView webCola;
 
     private void startSetup(ActionEvent event) {
 
@@ -70,27 +73,12 @@ public class FXMLDocumentController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
-//        colaCarros = new Cola<>();
-//        receptores = new Cola<>();
-//        for(int i= 0; i <= 5; i++)
-//        {
-//            
-//        }
-//        System.out.println(receptores.toString());
-//        t = new Timeline(new KeyFrame(Duration.millis(1000)), 
-//                new EventHandler<ActionEvent>(){
-//            @Override
-//            public void handle(ActionEvent event){
-//                funcionArbol();
-//            }
-//        });   
+        crearCarros();
+
+        mostrarColaEnWebView();
+
     }
-//        t.setCyclecount(Animation.INDEFINITE);
-//        
-//        webEngineCola = webCola.getEngine();
-//        webEngineCajeros = webCajeros.getEngine();
-    //necesitamos esto?
+
     private boolean verificarCajerosLibres() {
         return true;
     }
@@ -102,7 +90,7 @@ public class FXMLDocumentController implements Initializable {
         for (int i = 0; i < numeroCarros; i++) {
             int elModelo = (int) (Math.random() * (2024 - 2000 + 1) + 2000);
             int elTiempoLan = (int) (Math.random() * (5 - 1 + 1) + 1);
-            String elNombre = "David";
+            String elNombre = "David" + i;
             //los de arriba son el generador de carros 
 
             Carro nuevoCarro = new Carro(elModelo, elNombre, elTiempoLan);
@@ -116,6 +104,31 @@ public class FXMLDocumentController implements Initializable {
 
     }
 
+    public void mostrarColaEnWebView() {
+        StringBuilder htmlContent = new StringBuilder("<html><body>");
+
+        while (!colaCarros.estaVacia()) {
+
+            Carro carro = colaCarros.desencolar();
+            htmlContent
+                    .append("Modelo: ").append(carro.getModeloC()).append("<br>")
+                    .append("Nombre: ").append(carro.getNombreC()).append("<br>")
+                    .append("TiempoLanC: ").append(carro.getTiempoLanC())
+                    .append("</p>");
+            if(colaCarros.estaVacia()== true){
+                
+            }else{
+                break;
+            }
+                
+        }
+        htmlContent.append("</body></html>");
+
+        WebEngine webEngine = webCola.getEngine();
+        webEngine.loadContent(htmlContent.toString());
+
+    }
+
     //prueba de receptor 
     private void crearReceptor() {
         //lim es el numero limite de receptroes 
@@ -123,7 +136,7 @@ public class FXMLDocumentController implements Initializable {
 
         //este loop deberia generar revisiones por parte del receptor de manera infinita 
         while (true) {
-            
+
             Carro carroAAtender = colaCarros.desencolar();
             int tiempoLanC = carroAAtender.getTiempoLanC();
             //crea un loop como el de crear carro para ajustar los valores del receptro 
@@ -141,13 +154,13 @@ public class FXMLDocumentController implements Initializable {
                 }
             }
             try {
-                Thread.sleep(1000*tiempoLanC); // Espera 1 segundo
+                Thread.sleep(1000 * tiempoLanC); // Espera 1 segundo
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
         }
 
-    }
+    }// fin 
 
     private void funcionArbol() {
         crearCarros();

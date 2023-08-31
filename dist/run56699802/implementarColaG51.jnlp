@@ -8,7 +8,7 @@
   </information>
   <resources>
     <j2se version="1.6+" href="http://java.sun.com/products/autodl/j2se"/>
-    <jar href="implementarColaG51.jar" size="5520" download="eager" />
+    <jar href="implementarColaG51.jar" size="5514" download="eager" />
     <jar href="lib\colaG51.jar" size="10700" download="eager" />
   </resources>
   <applet-desc  width="800" height="600" main-class="com.javafx.main.NoJavaFXFallback"  name="implementarColaG51" >
