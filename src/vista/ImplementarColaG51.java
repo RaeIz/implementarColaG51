@@ -4,6 +4,12 @@
  * and open the template in the editor.
  */
 package vista;
+/**
+ * grupo
+ * salomon David 
+ * Sebastian
+ * Juan Sebastial Bastidas 
+*/
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;

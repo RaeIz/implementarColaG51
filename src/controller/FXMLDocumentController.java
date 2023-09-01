@@ -5,6 +5,13 @@
  */
 package controller;
 
+/**
+ * grupo
+ * salomon David 
+ * Sebastian
+ * Juan Sebastial Bastidas 
+*/
+
 import java.net.URL;
 import java.util.Random;
 import java.util.ResourceBundle;
